@@ -5,7 +5,7 @@ pendiente tambien puede de alterarse los resultados de una mala configuracion
 
 </p>
 
-(!res/topologia-base.jpg)(imagen)
+!(res/topologia-base.jpg)(imagen)
 
 <span> configuracion presente realizada en cisco packet tracert </span>
 
