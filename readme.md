@@ -5,7 +5,7 @@ pendiente tambien puede de alterarse los resultados de una mala configuracion
 
 </p>
 
-!(res/topologia-base.jpg)(imagen)
+![imagen-base](res/topologia-base.jpg)
 
 <span> configuracion presente realizada en cisco packet tracert </span>
 
@@ -17,5 +17,10 @@ a como se puede de configurar estos espacios de experimentacion de desarrollo
 la direccion de base para la configuracion aplicada es : 
 
 	-> 2001:DB8:ACAD:1111::/64 
+
 <span> esta direccion es publica </span>
-tambien es opcional ya que se configura para cada interfaz otras direcciones para poder realizar el request 
+tambien es opcional ya que se configura para cada interfaz otras direcciones para poder realizar el request de Dhcpv6 del router
+finalmente se tiene las pruebas de conexion en este caso se realiza el ping a la direccion asignada por el router de la pc3 del router (2)
+
+![router-ping](res/resultados.jpg)
+	-> archivo-configuracion-adjunto
