@@ -1,0 +1,111 @@
+· configuracion principal de la topologia presentada
+
+correspondiente mente para la configuracion se trabaja en Cisco Packet Tracert 
+en el cual se configura los 3 router con las direcccion IPV6
+
+: -:> 2001:DB8:ACAD:1111::/64
+
+se configura el router (0)
+
+
+enable
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip RIPNG_ENABLE
+
+interface GigabitEthernet0/0
+ ipv6 address 2001:db8:ACAD:1111::1/64
+ ipv6 rip RIPNG_ENABLE enable
+ ipv6 nd managed-config-flag  
+ ipv6 dhcp server DHCP_POOL   
+ no shutdown
+
+interface Serial0/1/0
+ ipv6 address 2001:db8:ACAD:1::1/64
+ ipv6 rip RIPNG_ENABLE enable
+ no shutdown
+
+ipv6 dhcp pool DHCP_POOL
+ address prefix 2001:db8:ACAD:1111::/64
+ dns-server 2001:db8:ACAD:1111::100  
+ domain-name cisco.com
+!
+
+
+Configuracion para el router (1)
+
+enable
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip RIPNG_ENABLE
+
+interface GigabitEthernet0/0
+ ipv6 address 2001:db8:ACAD:1111::1/64
+ ipv6 rip RIPNG_ENABLE enable
+ ipv6 nd managed-config-flag
+ ipv6 dhcp server DHCP_POOL
+ no shutdown
+
+interface Serial0/1/0
+ ipv6 address 2001:db8:ACAD:1::2/64
+ ipv6 rip RIPNG_ENABLE enable
+ no shutdown
+
+interface Serial0/1/1
+ ipv6 address 2001:db8:ACAD:2::1/64
+ ipv6 rip RIPNG_ENABLE enable
+ no shutdown
+
+ipv6 dhcp pool DHCP_POOL
+ address prefix 2001:db8:ACAD:1111::/64
+ dns-server 2001:db8:ACAD:1111::100
+ domain-name cisco.com
+!
+
+
+
+Configuracion de router (2)
+
+enable
+configure terminal
+ipv6 unicast-routing
+ipv6 router rip RIPNG_ENABLE
+
+interface GigabitEthernet0/0
+ ipv6 address 2001:db8:ACAD:1111::1/64
+ ipv6 rip RIPNG_ENABLE enable
+ ipv6 nd managed-config-flag
+ ipv6 dhcp server DHCP_POOL
+ no shutdown
+
+interface Serial0/1/1
+ ipv6 address 2001:db8:ACAD:2::2/64
+ ipv6 rip RIPNG_ENABLE enable
+ no shutdown
+
+ipv6 dhcp pool DHCP_POOL
+ address prefix 2001:db8:ACAD:1111::/64
+ dns-server 2001:db8:ACAD:1111::100
+ domain-name cisco.com
+!
+
+
+
+Finalmente para la configuracion de las maquinas se debe de configurar
+en las direcciones que tiene establecidas en automatico
+
+en -> pc0
+   -> pc1
+   -> pc2
+importante que en cada router se debe de guardar la configuracion
+tambien esto es opcional pero puedes de agregar 
+
+dentro de cada interfaz de cada router(0),(1) y (2)
+
+
+interface GigabitEthernet0/0
+ ipv6 enable
+  exit
+exit
+copy running-config startup-config
+reload
